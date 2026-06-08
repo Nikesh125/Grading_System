@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students' Grade Management System | Registration Page</title>
+    <!-- Include your local Bootstrap CSS file here -->
+    <link rel="stylesheet" href="Styles/bootstrap.min.css">
+
+    <style>
+        /* Minimal custom styling for the green essence aesthetic */
+        body {
+            /* Soft mint green to white gradient background */
+            background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Hover & transition effects for the role cards */
+        .role-card {
+            transition: all 0.25s ease-in-out;
+            border: 2px solid transparent;
+            text-decoration: none !important;
+        }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+            border-color: #198754; /* Bootstrap success green border on hover */
+            box-shadow: 0 1rem 3rem rgba(25, 135, 84, 0.15) !important;
+        }
+
+        /* Fix image scaling inside the selector cards */
+        .role-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            transition: transform 0.25s ease;
+        }
+
+        .role-card:hover .role-img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="register-container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6 text-center">
+                
+                <!-- Title Header with Green Essence -->
+                <h1 class="fw-bold text-success mb-2 fs-2">Create Your Account</h1>
+                <p class="text-secondary mb-4 small">Please select your role to continue with registration</p>
+
+                <!-- Clean Card Wrapper (Figma Style) -->
+                <div class="card border-0 shadow-lg p-4 p-md-5 rounded-4 bg-white">
+                    
+                    <!-- Role Selection Grid Section -->
+                    <div class="row g-4  mb-4" id="image">
+                        
+                        <!-- Student Option Block -->
+                        <div class="col-6">
+                            <a href="register-student.html" class="role-card card h-100 bg-light p-4 rounded-3 text-center shadow-sm">
+                                <div class="mb-3">
+                                    <img src="Styles/Assets/student.png" alt="Student" class="role-img img-fluid">
+                                </div>
+                                <span class="fw-bold text-dark fs-5">Student</span>
+                            </a>
+                        </div>
+
+                        <!-- Teacher Option Block -->
+                        <div class="col-6">
+                            <a href="register-teacher.html" class="role-card card h-100 bg-light p-4 rounded-3 text-center shadow-sm">
+                                <div class="mb-3">
+                                    <img src="Styles/Assets/teacher.png" alt="Teacher" class="role-img img-fluid">
+                                </div>
+                                <span class="fw-bold text-dark fs-5">Teacher</span>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Go Back Button Section -->
+                    <div id="go-back-btn" class="pt-2 border-top">
+                        <!-- Redirect back to login screen easily -->
+                        <button type="button" onclick="window.location.href='login.html';" class="btn btn-outline-secondary px-4 py-2 rounded-3 fw-medium small shadow-sm">
+                            ← Go Back to Login
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Include your local Bootstrap JS file here -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

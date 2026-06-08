@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Registration</title>
+    <link rel="stylesheet" href="Styles/bootstrap.min.css">
+    <style>
+        body { background-color: #f8f9fa; min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; }
+        .register-card { max-width: 450px; width: 100%; border: none; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        
+        /* Floating Alert Box Style */
+        .toast-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #f8d7da;
+            color: #842029;
+            border: 1px solid #f5c2c7;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
+        .toast-popup.show { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <div id="errorToast" class="toast-popup">
+        Error: This Faculty ID is already registered!
+    </div>
+
+    <div class="card register-card p-4 bg-white">
+        <div class="text-center mb-4">
+            <h3 class="fw-bold text-success">Teacher Registration</h3>
+            <p class="text-muted small">Create an instructor account portal console</p>
+        </div>
+
+        <form action="auth_routes.php" method="POST">
+            <input type="hidden" name="Reg-teacher-Submit" value="1">
+
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-secondary">Instructor ID / Symbol Number</label>
+                <input type="text" name="symbol_no" class="form-control" placeholder="e.g., T-2026-88" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-secondary">Full Name / Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-secondary">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Create a secure password" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-secondary">Phone Number</label>
+                <input type="text" name="phone" class="form-control" placeholder="e.g., +123456789" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label small fw-bold text-secondary">Email Address</label>
+                <input type="email" name="email" class="form-control" placeholder="username@school.com" required>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 text-white fw-bold py-2 mb-3">Register Teacher</button>
+            
+            <div class="text-center">
+                <span class="small text-muted">Already registered? <a href="index.html" class="text-decoration-none fw-bold text-success">Login Here</a></span>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') === 'duplicate') {
+            const toast = document.getElementById('errorToast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }, 2500); 
+        }
+    </script>
+</body>
+</html>
